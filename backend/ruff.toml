@@ -1,0 +1,39 @@
+# Ruff — linter + formatter para Python
+# Substitui: flake8, isort, black, pyupgrade
+# https://docs.astral.sh/ruff/
+
+# Compatibilidade com Python 3.12
+target-version = "py312"
+line-length = 100
+
+[lint]
+select = [
+    "E",    # pycodestyle errors
+    "W",    # pycodestyle warnings
+    "F",    # pyflakes (imports não usados, variáveis não definidas)
+    "I",    # isort (ordenação de imports)
+    "N",    # pep8-naming (convenções de nomes)
+    "UP",   # pyupgrade (modernização de sintaxe)
+    "B",    # flake8-bugbear (bugs comuns)
+    "S",    # flake8-bandit (segurança — detecta secrets, SQLi, etc.)
+    "ASYNC",# flake8-async (práticas async)
+    "TCH",  # flake8-type-checking
+    "RUF",  # regras específicas do Ruff
+]
+
+ignore = [
+    "S101",  # uso de assert (necessário em testes)
+    "S104",  # bind em 0.0.0.0 (necessário no Docker)
+    "B008",  # call em default de argumento (padrão do FastAPI Depends)
+]
+
+[lint.per-file-ignores]
+"tests/**/*.py" = ["S", "N"]   # relaxa regras de segurança e nomes nos testes
+"alembic/**/*.py" = ["N", "E501"]
+
+[lint.isort]
+known-first-party = ["app"]
+
+[format]
+quote-style = "double"
+indent-style = "space"

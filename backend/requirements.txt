@@ -1,0 +1,37 @@
+# ── Web Framework ─────────────────────────────────────────────
+fastapi==0.115.6
+uvicorn[standard]==0.32.1          # servidor ASGI com websockets
+websockets==14.1                   # suporte a WebSocket nativo
+
+# ── Banco de Dados ────────────────────────────────────────────
+sqlalchemy[asyncio]==2.0.36        # ORM async
+asyncpg==0.30.0                    # driver PostgreSQL async (mais rápido que psycopg2)
+alembic==1.14.0                    # migrations de banco de dados
+
+# ── Cache ─────────────────────────────────────────────────────
+redis[asyncio]==5.2.1              # cliente Redis com suporte async
+
+# ── HTTP Client ───────────────────────────────────────────────
+httpx==0.28.1                      # HTTP async (melhor que requests para FastAPI)
+
+# ── Validação e Serialização ──────────────────────────────────
+pydantic==2.10.4                   # validação de dados (FastAPI já usa)
+pydantic-settings==2.7.0           # leitura de variáveis de ambiente tipadas
+
+# ── Logging ───────────────────────────────────────────────────
+structlog==24.4.0                  # logging estruturado em JSON
+
+# ── Utilitários ───────────────────────────────────────────────
+python-dotenv==1.0.1               # carrega .env em desenvolvimento
+tenacity==9.0.0                    # retry automático com backoff exponencial
+
+# ── Testes ───────────────────────────────────────────────────
+pytest==8.3.4
+pytest-asyncio==0.24.0
+pytest-cov==6.0.0
+httpx==0.28.1                      # já listado acima — usado também no TestClient
+anyio==4.7.0
+aiosqlite==0.20.0                  # driver SQLite async para testes em memória
+
+# ── Qualidade de Código ───────────────────────────────────────
+ruff==0.8.4                        # linter + formatter (substitui flake8+isort+black)

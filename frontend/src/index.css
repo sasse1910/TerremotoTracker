@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Garante que o mapa ocupe a tela inteira */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Override do z-index do Leaflet para não sobrepor o painel lateral */
+.leaflet-container {
+  z-index: 0;
+}
+
+/* Animação do banner de alerta crítico */
+@keyframes alert-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.alert-critical {
+  animation: alert-pulse 1s ease-in-out infinite;
+}
