@@ -73,7 +73,7 @@ jobs:
       REDIS_URL: redis://localhost:6379/0
       REDIS_PASSWORD: ""
       SECRET_KEY: test-secret-key-not-for-production
-      ALLOWED_ORIGINS: http://localhost:5173
+      ALLOWED_ORIGINS: '["http://localhost:5173"]'
 
     steps:
       - name: Checkout
@@ -90,6 +90,8 @@ jobs:
 
       - name: Run Alembic migrations
         working-directory: backend
+        env:
+          PYTHONPATH: .
         run: alembic upgrade head
 
       - name: Run pytest with coverage
